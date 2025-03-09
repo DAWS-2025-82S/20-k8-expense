@@ -44,4 +44,22 @@ spec:
     port: 80 # service port
     targetPort: 8080
 
-# kubectl apply -f manifest.yaml        
+# kubectl apply -f manifest.yaml  
+
+# For kubernetes change port 80 to 8080 in nginx.conf file in Dockerfile and 
+# build the image in "18-expense-docker" repo
+# remove /etc/nginx/conf.d/default.conf file which has port 80
+
+# kubernetes won't allow system ports for non root user
+# 0-1024 are system ports -- pod/container has to run with root user to access system ports
+# Non root users cannot access this ports
+
+# Either change user to root or change the port in frontend nginx.conf from 80 to 8080
+
+# docker build -t dath1/frontend:1.2.0 .
+# docker push dath1/frontend:1.2.0
+
+# Test the app with url
+# http://<LB_DNS_NAME>:80
+
+# add route 53 record for LB DNS NAme and test the url with dns name
