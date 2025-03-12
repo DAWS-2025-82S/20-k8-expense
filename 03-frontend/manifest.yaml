@@ -44,6 +44,9 @@ spec:
     port: 80 # service port
     targetPort: 8080
 
+
+# For LB service type no need to mention node port and open in secuirty group
+
 # kubectl apply -f manifest.yaml  
 
 # For kubernetes change port 80 to 8080 in nginx.conf file in Dockerfile and 
